@@ -1,38 +1,145 @@
-.App {
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(145deg, #89f7fe, #66a6ff);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.game-container {
+  width: 90%;
+  max-width: 800px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.game-info p {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.game-controls {
+  margin-top: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.start-btn {
+  background-color: #28a745;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.restart-btn {
+  background-color: #007bff;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+button:hover {
+  opacity: 0.8;
+}
+
+.game-board {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  cursor: pointer;
+  font-size: 2rem;
+  color: white;
+  transition: transform 0.3s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card.flipped {
+  background-color: #28a745;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card.flipped:after {
+  content: attr(data-value);
+  position: absolute;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+}
+
+.notification.success {
+  background-color: #28a745;
+}
+
+.notification.error {
+  background-color: #dc3545;
+}
+
+.notification button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.notification button:hover {
+  opacity: 0.7;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0.9;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card {
+    height: 70px;
+    font-size: 20px;
+  }
+
+  .game-board {
+    max-width: 350px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
   }
 }
